@@ -14,17 +14,17 @@ import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.OptionalDouble;
-import java.util.Timer;
+import java.util.*;
 
 public class Bot {
+
+    private static final boolean RUN_ON_STARTUP = false;
+    private static final long DELAY = 86400000L; // Millis delay. 86400000 = 1 day
 
     private static JDA jda;
 
     public Bot() throws InterruptedException {
-        jda = JDABuilder.createDefault("TOKEN")
+        jda = JDABuilder.createDefault("X")
                             .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                             .addEventListeners(new Command())
                             .build()
@@ -35,7 +35,9 @@ public class Bot {
                         .setGuildOnly(true)
                         .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.ADMINISTRATOR))).complete();
 
-        new Timer().schedule(new Task(), 0, 86400000L);
+        System.out.println("Online");
+
+        new Timer().schedule(new Task(), RUN_ON_STARTUP ? 0 : DELAY , DELAY);
     }
 
     public static JDA getJDA() { return jda; }
