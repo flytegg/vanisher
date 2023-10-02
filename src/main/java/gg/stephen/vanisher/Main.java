@@ -1,4 +1,4 @@
-package gg.stephen;
+package gg.stephen.vanisher;
 
 public class Main {
 

@@ -1,6 +1,5 @@
-package gg.stephen;
+package gg.stephen.vanisher;
 
-import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
