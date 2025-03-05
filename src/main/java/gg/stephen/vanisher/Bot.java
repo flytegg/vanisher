@@ -11,13 +11,13 @@ import java.util.*;
 
 public class Bot {
 
-    private static final boolean RUN_ON_STARTUP = false;
-    private static final long DELAY = 86400000L; // Millis delay. 86400000 = 1 day
+    private static final boolean RUN_ON_STARTUP = true;
+    private static final long DELAY = 31557600000L; // Millis delay. 86400000 = 1 day
 
     private static JDA jda;
 
     public Bot() throws InterruptedException {
-        jda = JDABuilder.createDefault("X")
+        jda = JDABuilder.createDefault(System.getenv("BOT_TOKEN"))
                             .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                             .addEventListeners(new Command())
                             .build()
@@ -27,8 +27,6 @@ public class Bot {
                 Commands.slash("vanish", "Vanish.")
                         .setGuildOnly(true)
                         .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.ADMINISTRATOR))).complete();
-
-        System.out.println("Online");
 
         new Timer().schedule(new Task(), RUN_ON_STARTUP ? 0 : DELAY , DELAY);
     }

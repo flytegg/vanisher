@@ -11,7 +11,7 @@ import java.util.TimerTask;
 public class Task extends TimerTask {
 
     private List<String> USERS = Arrays.asList("676926873669992459","181837365621424128","257818210697478145","867435070696456222","196505313099120640","174596615275806720");
-    private List<String> CHANNELS = Arrays.asList("397526357757657089","397529992504016896","1054929646002638868","978339583148298240","695692238608531456","398279082996924416");
+    private List<String> CHANNELS = Arrays.asList("397526357757657089","397529992504016896","1054929646002638868","978339583148298240","695692238608531456","398279082996924416","888162787229048842");
     private int SEARCH_DELAY = 259_200_000; // Millis representing where to start searching from. Eg 259,200,000 = 3 days = start search from 3 days prior to task
     private long SEARCH_LENGTH = 604_800_000; // Millis representing how long to search for from the SEARCH_DELAY date. Eg 604,800,000 = 7 days = will stop searching once reached 7 days from SEARCH_DELAY
 
@@ -80,7 +80,7 @@ public class Task extends TimerTask {
         log("Vanish complete");
     }
 
-    private TextChannel logChannel = Bot.getJDA().getTextChannelById("1157746816956252181");
+    private TextChannel logChannel = Bot.getJDA().getTextChannelById("1160733754193621153");
 
     private void log(String message) {
         logChannel.sendMessage(message).queue();
