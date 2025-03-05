@@ -1,22 +1,15 @@
 plugins {
-    java
     application
+    kotlin("jvm") version "2.1.20-Beta1"
+    kotlin("plugin.serialization") version "2.1.10"
+    id("com.gradleup.shadow") version "latest.release"
 }
 
-group = "gg.stephen"
-version = "1.0-SNAPSHOT"
+group = "org.example"
+version = "1.0"
 
 repositories {
     mavenCentral()
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
-
-application {
-    mainClass.set("gg.stephen.vanisher.Main")
 }
 
 dependencies {
@@ -25,6 +18,15 @@ dependencies {
     }
 }
 
-tasks.withType<JavaCompile> {
-    options.encoding = "UTF-8"
+tasks {
+    compileJava { options.release.set(17) }
+    jar {
+        manifest { attributes["Main-Class"] = application.mainClass }
+    }
+    build { dependsOn(shadowJar) }
+//    shadowJar {
+//        archiveFileName.set("bot.jar") // remove this for native file naming
+//    }
 }
+
+application { mainClass.set("gg.stephen.vanisher.Main") }
