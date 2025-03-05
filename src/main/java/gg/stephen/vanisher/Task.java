@@ -80,7 +80,7 @@ public class Task extends TimerTask {
         log("Vanish complete");
     }
 
-    private TextChannel logChannel = Bot.getJDA().getTextChannelById("1160733754193621153");
+    private TextChannel logChannel = Bot.getJDA().getTextChannelById("1157746816956252181");
 
     private void log(String message) {
         logChannel.sendMessage(message).queue();
