@@ -60,6 +60,7 @@
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
             <version>5.0.0-beta.3</version>
+            <scope>compile</scope>
             <exclusions>
                 <exclusion>
                     <groupId>club.minnced</groupId>
